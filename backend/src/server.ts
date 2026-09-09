@@ -9,12 +9,42 @@ const app = express();
 app.use(cors()); // Middleware: allows requests from other origins, e.g. Vite frontend
 app.use(express.json()); // Middleware: automatically parses incoming JSON request bodies
 
-// GET route
+// Health check
 app.get("/api/health", (req, res) =>{
     res.json({
         status: "ok"
     });
 });
+
+// Temporary route to test Sportmonks API
+app.get("/api/test-sportmonks", async (req, res)=>{
+    try{
+        const token = process.env.SPORTMONKS_API_TOKEN;
+
+        if(!token){
+            return res.status(500).json({
+                error: "Missing API token"
+            });
+        }
+
+        const response = await fetch(
+            `https://api.sportmonks.com/v3/football/fixtures?api_token=${token}`
+        );
+
+        const data = await response.json();
+
+        res.status(response.status).json(data);
+
+    } catch (error){
+        console.error(error);
+
+        res.status(500).json({
+            error: "Failed to contact Sportmonks"
+        });
+    }
+});
+
+
 
 // Starts the HTTP server on port 3000
 app.listen(3000, ()=>{
