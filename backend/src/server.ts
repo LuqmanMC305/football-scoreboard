@@ -17,8 +17,9 @@ app.get("/api/health", (req, res) =>{
 });
 
 // Temporary route to test Sportmonks API
-app.get("/api/test-sportmonks", async (req, res)=>{
+app.get("/api/fixtures/:id", async (req, res)=>{
     try{
+        const fixtureId = req.params.id;
         const token = process.env.SPORTMONKS_API_TOKEN;
 
         if(!token){
@@ -28,7 +29,7 @@ app.get("/api/test-sportmonks", async (req, res)=>{
         }
 
         const response = await fetch(
-            `https://api.sportmonks.com/v3/football/fixtures?api_token=${token}`
+            `https://api.sportmonks.com/v3/football/fixtures/${fixtureId}?api_token=${token}`
         );
 
         const data = await response.json();
