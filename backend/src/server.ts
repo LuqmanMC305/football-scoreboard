@@ -1,3 +1,5 @@
+// Configures and starts back end server
+
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
