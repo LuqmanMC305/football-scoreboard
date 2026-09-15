@@ -1,3 +1,5 @@
+// Defines standard data for football match
+
 export interface Match{
     id: Number;
     homeTeam: string;
