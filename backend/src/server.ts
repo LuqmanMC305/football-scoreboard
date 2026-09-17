@@ -11,7 +11,7 @@ const app = express();
 
 app.use(cors()); // Middleware: allows requests from other origins, e.g. Vite frontend
 app.use(express.json()); // Middleware: automatically parses incoming JSON request bodies
-app.use("api/fixtures", fixtureRoutes);
+app.use("/api/fixtures", fixtureRoutes);
 
 // Health check
 app.get("/api/health", (req, res) =>{
