@@ -9,7 +9,7 @@ export async function getFixture(fixtureId: number){
     } 
 
     const response = await fetch(
-        `${BASE_URL}/fixtures/${fixtureId}?api_token=${token}`
+        `${BASE_URL}/fixtures/${fixtureId}?api_token=${token}&include=participants;scores;state`
     );
 
     if(!response.ok){

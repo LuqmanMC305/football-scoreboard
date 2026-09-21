@@ -15,6 +15,8 @@ router.get("/:id", async (req, res) => {
         // Get raw fixture data from Sportmonks
         const fixture = await getFixture(fixtureId); 
 
+        console.log(JSON.stringify(fixture, null, 2));
+
         // Tranfrom to standard Match format
         const standardMatchFormat = transformFixture(fixture.data);
 
