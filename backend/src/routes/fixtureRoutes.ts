@@ -2,16 +2,23 @@
 
 import { Router } from "express";
 import { getFixture } from "../providers/SportmonksProvider";
+import { transformFixture } from "../services/MatchService";
 
 const router = Router();
 
 router.get("/:id", async (req, res) => {
     try{
-        const fixtureId = Number(req.params.id); // gets id from URL that you've typed on browser (e.g. 12345)
 
-        const fixture = await getFixture(fixtureId); // passes the id
+        // Get id from URL that you've typed on browser (e.g. 12345)
+        const fixtureId = Number(req.params.id); 
+        
+        // Get raw fixture data from Sportmonks
+        const fixture = await getFixture(fixtureId); 
 
-        res.json(fixture);
+        // Tranfrom to standard Match format
+        const standardMatchFormat = transformFixture(fixture.data);
+
+        res.json(standardMatchFormat);
     } catch (error){
         console.error(error);
 
