@@ -1,4 +1,4 @@
-// Defines standard data for football match when searching the club's name
+// Defines simplified data for football match when searching the club's name
 
 export interface FixtureSearchResult{
     id: number,
