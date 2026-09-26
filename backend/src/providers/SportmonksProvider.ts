@@ -2,7 +2,7 @@ import { encode } from "node:punycode";
 
 const BASE_URL = `https://api.sportmonks.com/v3/football`;
 
-export async function getFixture(searchQuery: string){
+export async function searchFixture(searchQuery: string){
     const token = process.env.SPORTMONKS_API_TOKEN;
 
     if(!token){
@@ -21,7 +21,7 @@ export async function getFixture(searchQuery: string){
 
 }
 
-export async function searchFixture(fixtureId: string){
+export async function getFixture(fixtureId: string){
     const token = process.env.SPORTMONKS_API_TOKEN;
 
     if(!token){
