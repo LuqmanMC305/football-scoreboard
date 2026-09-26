@@ -36,3 +36,12 @@ export function transformFixture(fixture : any): Match{
 
     }
 }
+
+/* FOR TRANSFORM FIXTURE SEARCH FUNCTION
+
+export function transformFixtureSearch(
+    fixtures: any[]
+): FixtureSearchResult[]{
+
+    }
+*/
