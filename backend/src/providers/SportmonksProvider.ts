@@ -1,3 +1,4 @@
+import { encode } from "node:punycode";
 
 const BASE_URL = `https://api.sportmonks.com/v3/football`;
 
@@ -9,7 +10,7 @@ export async function getFixture(fixtureId: number){
     } 
 
     const response = await fetch(
-        `${BASE_URL}/fixtures/${fixtureId}?api_token=${token}&include=participants;scores;state`
+        `${BASE_URL}/fixtures/search/${encodeURIComponent(searchQuery)}?api_token=${token}&include=participants;scores;state`
     );
 
     if(!response.ok){
