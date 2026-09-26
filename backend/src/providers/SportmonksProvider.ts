@@ -21,7 +21,7 @@ export async function searchFixture(searchQuery: string){
 
 }
 
-export async function getFixture(fixtureId: string){
+export async function getFixture(fixtureId: number){
     const token = process.env.SPORTMONKS_API_TOKEN;
 
     if(!token){
