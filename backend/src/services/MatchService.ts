@@ -42,14 +42,24 @@ export function transformFixtureSearch(
     fixtures: any[]
 ): FixtureSearchResult[]{
 
+    // Current date 
+    const now = new Date();
+
     // Transforms each fixture into a simplified search result
-    return fixtures.map((fixture: any) =>{
-        return{
-            id: fixture.id,
-            name: fixture.name,
-            startTime: fixture.starting_at
-        };
-    });
+    return fixtures
+        // Checks each fixture individually
+        .filter((fixture: any) => {
+            const fixtureDate = new Date(fixture.starting_at); //Convert to JS Date object
+
+            return fixtureDate <= now; // Discard if it's in the future
+        })
+        .map((fixture: any) =>{
+            return{
+                id: fixture.id,
+                name: fixture.name,
+                startTime: fixture.starting_at
+            };
+        });
 
 }
 
