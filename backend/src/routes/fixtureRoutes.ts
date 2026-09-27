@@ -6,6 +6,7 @@ import {
     searchFixture
 } from "../providers/SportmonksProvider";
 import { transformFixture } from "../services/MatchService";
+import { transformFixtureSearch } from "../services/MatchService";
 
 const router = Router();
 
@@ -46,9 +47,9 @@ router.get("/search/:query", async (req, res) => {
         console.log(JSON.stringify(response, null, 2));
 
         // Tranfrom to standard Match format
-       // const standardMatchFormat = transformFixture(response.data);
+        const standardMatchFormat = transformFixtureSearch(response.data);
 
-        res.json(response.data);
+        res.json(standardMatchFormat);
     } catch (error){
         console.error(error);
 
